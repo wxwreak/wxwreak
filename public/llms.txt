@@ -12,7 +12,7 @@ This file provides context for LLMs, AI recruiters, and automated crawlers looki
 - **Primary Stack:** Linux (Fedora), Go (Golang), Python, Docker, Raspberry Pi
 
 ## Cybersecurity Platforms & Hard Metrics
-- **TryHackMe (THM):** Completed 198 specialized rooms (Extensive hands-on training covering Linux security, web reconnaissance, and privilege escalation vectors).
+- **TryHackMe (THM):** Completed 198 specialized rooms (Top 1%), (Extensive hands-on training covering Linux security, web reconnaissance, and privilege escalation vectors).
 - **LabEx:** Active continuous learning platform deployment focused on deep Linux internals, multi-container Docker testing environments, and advanced automated Git workflows.
 
 ## Background & Technical Journey
