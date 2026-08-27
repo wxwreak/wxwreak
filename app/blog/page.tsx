@@ -9,8 +9,23 @@ export default function BlogIndex() {
   
   if (!fs.existsSync(postsDirectory)) {
     return (
-      <div className="bg-black text-white selection:bg-white selection:text-black min-h-screen font-sans antialiased flex items-center justify-center">
-        <p className="font-mono text-gray-500 uppercase tracking-widest">[ No articles found ]</p>
+      <div className="bg-black text-white selection:bg-white selection:text-black min-h-screen font-sans antialiased flex flex-col justify-between">
+        <main className="max-w-4xl mx-auto px-4 sm:px-6 pt-16 md:pt-32 w-full">
+          <div className="mb-12">
+            <Link 
+              href="/" 
+              className="font-mono text-xs sm:text-sm text-gray-500 hover:text-white transition uppercase tracking-widest inline-block"
+            >
+              &larr; [ Back home ]
+            </Link>
+          </div>
+          <div className="flex items-center justify-center py-32">
+            <p className="font-mono text-gray-500 uppercase tracking-widest">[ No articles found ]</p>
+          </div>
+        </main>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 w-full">
+          <Footer />
+        </div>
       </div>
     );
   }
