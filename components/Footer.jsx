@@ -18,7 +18,7 @@ export default function Footer() {
         <div className="flex flex-wrap justify-center gap-6 text-gray-500 font-mono text-xs uppercase tracking-widest">
           <a href="https://github.com/wxwreak" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Github</a>
           <a href="https://tryhackme.com/p/wxwreak" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">TryHackMe</a>
-          <a href="https://x.com/wxwreak" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">X</a>
+          <a href="https://x.com/wxwreak" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">X (Twitter)</a>
           <a href="https://dev.to/wxwreak" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Dev.To</a>
         </div>
       </div>
