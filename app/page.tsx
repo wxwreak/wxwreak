@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from 'next/link';
 import Footer from '@/components/Footer';
 import ProjectRow from '@/components/ProjectRow';
 import SkillRow from '@/components/SkillRow';
@@ -11,29 +12,40 @@ export default function Home() {
     <div className="bg-black text-white selection:bg-white selection:text-black min-h-screen font-sans antialiased">
       <AIContext />
       <main className="max-w-4xl mx-auto px-4 sm:px-6 pt-16 md:pt-32">
-            <section className="mb-20 md:mb-40">
-        <div className="flex flex-col sm:flex-row items-start sm:items-end gap-6 md:gap-10">
-          <div className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-40 md:h-40 shrink-0 overflow-hidden rounded-2xl border-2 border-white sm:translate-y-4">
-            <Image 
-              src={pfpUrl}
-              alt="Profile" 
-              className="object-cover" 
-              fill 
-              priority 
-              sizes="(max-width: 768px) 96px, 160px"
-            />
-          </div>
+        <section className="mb-20 md:mb-40">
+          <div className="flex flex-col sm:flex-row items-start sm:items-end gap-6 md:gap-10">
+            <div className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-40 md:h-40 shrink-0 overflow-hidden rounded-2xl border-2 border-white sm:translate-y-4">
+              <Image 
+                src={pfpUrl}
+                alt="Profile" 
+                className="object-cover" 
+                fill 
+                priority 
+                sizes="(max-width: 768px) 96px, 160px"
+              />
+            </div>
 
-          <div className="flex flex-col">
-            <h1 className="text-5xl sm:text-6xl md:text-[140px] font-bold leading-[0.85] md:leading-[0.75] tracking-tighter uppercase italic">
-              wxwreak
-            </h1>
-            <p className="text-gray-500 font-mono text-xs sm:text-sm md:text-base mt-2 sm:mt-4 sm:ml-2 tracking-[0.1em] sm:tracking-[0.2em] uppercase">
-              Infrastructure, Automation & Security Tooling
-            </p>
+            <div className="flex flex-col">
+              <h1 className="text-5xl sm:text-6xl md:text-[140px] font-bold leading-[0.85] md:leading-[0.75] tracking-tighter uppercase italic">
+                wxwreak
+              </h1>
+              <p className="text-gray-500 font-mono text-xs sm:text-sm md:text-base mt-2 sm:mt-4 sm:ml-2 tracking-[0.1em] sm:tracking-[0.2em] uppercase">
+                Infrastructure, Automation & Security Tooling
+              </p>
+              
+              {/* Odkaz na blog přidaný hned nahoru */}
+              <div className="mt-4 sm:ml-2">
+                <Link 
+                  href="/blog" 
+                  className="font-mono text-xs sm:text-sm text-gray-400 hover:text-white transition-colors uppercase tracking-widest inline-flex items-center gap-2 group"
+                >
+                  <span>[ Read my blog ]</span>
+                  <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
+                </Link>
+              </div>
+            </div>
           </div>
-      </div>
-      </section>
+        </section>
 
     <div className="mt-24 mb-10 ml-2">
       <h2 className="text-4xl md:text-6xl font-bold uppercase italic tracking-tighter text-gray-200 opacity-50">
