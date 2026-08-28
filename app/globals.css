@@ -19,8 +19,8 @@
   }
 }
 
-@media (min-width: 1024px) {
-  * {
+@media (pointer: fine) and (min-width: 1024px) {
+  html, body, * {
     cursor: none !important;
   }
 }

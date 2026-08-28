@@ -4,8 +4,8 @@ export default function Footer() {
   return (
     <footer className="mt-40 pb-20 border-t border-gray-900 pt-10 overflow-hidden">
       <div className="flex flex-col items-center justify-center gap-8">        
-        <div className="w-full overflow-x-auto select-none pointer-events-none opacity-35 px-4 flex justify-center">
-          <pre className="font-mono text-[10px] sm:text-[14px] md:text-[20px] leading-none text-white animate-pulse tracking-[0.2em] sm:tracking-[0.4em]">
+        <div className="w-full overflow-hidden select-none pointer-events-none opacity-35 px-4 flex justify-center flex-shrink-0">
+          <pre className="font-mono text-[10px] sm:text-[14px] md:text-[20px] leading-none text-white animate-pulse tracking-[0.2em] sm:tracking-[0.4em] text-center">
             <code>
             {` .     +      .          * .     +      .
             * .     +    .          * .     +

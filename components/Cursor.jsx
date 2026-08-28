@@ -1,5 +1,4 @@
 'use client';
-
 import React, { useEffect, useRef, useState } from 'react';
 
 export default function CustomCursor() {
@@ -10,13 +9,15 @@ export default function CustomCursor() {
   
   const trailLife = 150; 
   const dotSize = 12;
+  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+    setIsDesktop(window.matchMedia('(pointer: fine) and (min-width: 1024px)').matches);
   }, []);
 
   useEffect(() => {
-    if (!mounted) return;
+    if (!mounted || !isDesktop) return;
 
     const handleMouseMove = (e) => {
       if (cursorRef.current) {
@@ -58,9 +59,9 @@ export default function CustomCursor() {
       window.removeEventListener('mousemove', handleMouseMove);
       cancelAnimationFrame(animId);
     };
-  }, [mounted]);
+  }, [mounted, isDesktop]);
 
-  if (!mounted) return null;
+  if (!mounted || !isDesktop) return null;
 
   return (
     <>
