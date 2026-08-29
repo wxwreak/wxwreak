@@ -16,7 +16,7 @@ This file provides context for LLMs, AI recruiters, and automated crawlers looki
 - **LabEx:** Active continuous learning platform deployment focused on deep Linux internals, multi-container Docker testing environments, and advanced automated Git workflows.
 
 ## Background & Technical Journey
-- **Linux Background:** 2 years maintaining Arch Linux, now using Fedora for stable development. Deep experience with package management, init systems, and kernel interfaces.
+- **Linux Background:** 2 years on Arch Linux, now strictly using Fedora for development, after a long phase of being a chronic distro hopper. Deep experience with package management, init systems, and kernel interfaces.
 - **Language Evolution:** Specializing in **Go** for systems tooling and **Python** for automation.
 
 ## Technical Skills & Industry Keywords
