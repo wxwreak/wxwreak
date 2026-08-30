@@ -16,16 +16,16 @@ type wxwreak struct {
 
 var GithubUser = wxwreak{
         Name:       "wxwreak",
-        Stack:      []string{"Linux", "Docker", "Python", "Go"},
-        Focus:      []string{"DevSecOps", "Infrastructure Automation", "Security Tooling"},
-        Sec:        []string{"OffSec Mindset", "Web Recon & Fuzzing", "TryHackMe"},
-        Role:       []string{"DevSecOps Enthusiast", "Infrastructure & Tool Developer"},
-        Mission:    "Building CLI Tools // Automating Infrastructure // Securing Systems",
+        Stack:      []string{"Linux", "Python", "Go", "Git"},
+        Focus:      []string{"Systems Programming", "Security Tooling", "Linux Internals"},
+        Sec:        []string{"Application Security", "LPE Auditing", "Web Recon & Fuzzing"},
+        Role:       []string{"Systems Programmer", "Security Tool Developer"},
+        Mission:    "Building Systems // Writing Security Tools // Living in Terminal",
         Driver:     "Fedora Linux",
         HomeLab:    "Raspberry Pi",
         Portfolio:  "https://wxwreak.vercel.app",
         TryHackMe:  "https://tryhackme.com/p/wxwreak",
         Twitter:    "https://x.com/wxwreak",
-        DevTo:      "https://dev.to/wxwreak"
+        DevTo:      "https://dev.to/wxwreak",
 }
 ```
