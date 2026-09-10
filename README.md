@@ -12,6 +12,7 @@ type wxwreak struct {
         TryHackMe  string
         Twitter    string
         DevTo      string
+        Reddit     string
 }
 
 var GithubUser = wxwreak{
@@ -27,5 +28,6 @@ var GithubUser = wxwreak{
         TryHackMe:  "https://tryhackme.com/p/wxwreak",
         Twitter:    "https://x.com/wxwreak",
         DevTo:      "https://dev.to/wxwreak",
+        Reddit:     "https://www.reddit.com/user/wxwreak",
 }
 ```
