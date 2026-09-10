@@ -33,7 +33,6 @@ export default function Home() {
                 Infrastructure, Automation & Security Tooling
               </p>
               
-              {/* Odkaz na blog přidaný hned nahoru */}
               <div className="mt-4 sm:ml-2">
                 <Link 
                   href="/blog" 

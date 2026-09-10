@@ -5,16 +5,16 @@ import './globals.css';
 export const metadata: Metadata = {
   metadataBase: new URL('https://wxwreak.vercel.app/'), 
   title : {
-    default: "wxwreak | DevSecOps & Open Source Tool Developer",
+    default: "wxwreak | Infrastructure, Automation & Security Tooling",
     template: "%s | wxwreak"
   },
   description: "Infrastructure, Automation & Security Tooling",
   authors : [{ name: "wxwreak" }],
   openGraph: {
-    title: "wxwreak | DevSecOps & Open Source Tool Developer",
+    title: "wxwreak | Infrastructure, Automation & Security Tooling",
     description: "Infrastructure, Automation & Security Tooling",
     url: "https://wxwreak.vercel.app/",
-    siteName: "wxwreak | DevSecOps & Open Source Tool Developer",
+    siteName: "wxwreak | Infrastructure, Automation & Security Tooling",
     locale: "en_US",
     type: "website",
     images: [
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "wxwreak | DevSecOps & Open Source Tool Developer",
+    title: "wxwreak | Infrastructure, Automation & Security Tooling",
     images: ["https://avatars.githubusercontent.com/u/217353155?v=4&s=400"],
   },
 };

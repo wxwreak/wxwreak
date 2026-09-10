@@ -11,7 +11,6 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
-// 🌐 Pomocná funkce upravená tak, aby v ní nebyly překlepy
 function getPostData(slug: string) {
   try {
     const postDirectory = path.join(process.cwd(), 'posts');
@@ -23,7 +22,7 @@ function getPostData(slug: string) {
       slug, 
       content,
       title: data.title || 'Untitled Post',
-      date: data.date || '', // 🔧 Opraveno z nefunkčního Date.date
+      date: data.date || '',
       description: data.description || '',
     };
   } catch (e) {
@@ -31,11 +30,8 @@ function getPostData(slug: string) {
   }
 }
 
-// ==========================================
-// 🔥 FUNKCE 1: DYNAMICKÁ METADATA PRO GOOGLE
-// ==========================================
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params; // 🔧 V novém Next.js musíme params awaitnout
+  const { slug } = await params;
   const post = getPostData(slug);
   if (!post) return { title: 'Post Not Found' };
   return {
@@ -45,7 +41,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: post.title,
       description: post.description,
       type: 'article',
-      publishedTime: post.date, // 🔧 Opraveno z post.data
+      publishedTime: post.date,
     },
   };
 }
@@ -71,7 +67,6 @@ export default async function BlogPost({ params }: Props) {
     );
   }
 
-  // Převod Markdownu na HTML
   const processedContent = await remark()
     .use(html)
     .process(post.content);
@@ -91,7 +86,6 @@ export default async function BlogPost({ params }: Props) {
 
   return (
     <div className="bg-black text-white selection:bg-white selection:text-black min-h-screen font-sans antialiased">
-      {/* Vložení JSON-LD pro vyhledávače */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
