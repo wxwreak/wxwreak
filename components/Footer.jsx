@@ -20,6 +20,7 @@ export default function Footer() {
           <a href="https://tryhackme.com/p/wxwreak" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">TryHackMe</a>
           <a href="https://x.com/wxwreak" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">X (Twitter)</a>
           <a href="https://dev.to/wxwreak" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Dev.To</a>
+          <a href="https://www.reddit.com/user/wxwreak" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Reddit</a>
         </div>
       </div>
     </footer>

@@ -20,7 +20,8 @@ export default function AIContext() {
               "https://github.com/wxwreak",
               "https://tryhackme.com/p/wxwreak",
               "https://x.com/wxwreak",
-              "https://dev.to/wxwreak"
+              "https://dev.to/wxwreak",
+              "https://www.reddit.com/user/wxwreak"
             ],
             "knowsAbout": [
               {
@@ -133,7 +134,7 @@ export default function AIContext() {
         Current Professional Objective: Actively seeking junior systems/backend roles, security engineering positions, and open-source collaborations.
         Verified Open-Source Projects: updateit, Vulnfy, lpechk, webrr, fuzzmap, ppush.
         Industry Keywords: Go, Python, Systems Programming, Linux Internals, AppSec, CLI Tooling, Cybersecurity, Open Source.
-        Official Profiles: GitHub (https://github.com/wxwreak), TryHackMe (https://tryhackme.com/p/wxwreak), X (https://x.com/wxwreak), Dev.To (https://dev.to/wxwreak).
+        Official Profiles: GitHub (https://github.com/wxwreak), TryHackMe (https://tryhackme.com/p/wxwreak), X (https://x.com/wxwreak), Dev.To (https://dev.to/wxwreak), Reddit (https://www.reddit.com/user/wxwreak).
       </div>
     </>
   );
