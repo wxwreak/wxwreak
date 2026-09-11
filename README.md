@@ -1,13 +1,20 @@
 ```go
-type wxwreak struct {
+type identity struct {
         Name       string
-        Stack      []string
         Focus      []string
-        Sec        []string
-        Role       []string
         Mission    string
-        Driver     string
-        HomeLab    string
+}
+
+var Identity = identity{
+        Name:       "wxwreak",
+        Focus:      []string{"Systems Programming", "Security Tooling", "Linux Internals"},
+        Mission:    "Building Systems // Writing Security Tools // Living in Terminal",
+}
+```
+<br>
+
+```go
+type links struct {
         Portfolio  string
         TryHackMe  string
         Twitter    string
@@ -15,19 +22,31 @@ type wxwreak struct {
         Reddit     string
 }
 
-var GithubUser = wxwreak{
-        Name:       "wxwreak",
-        Stack:      []string{"Linux", "Python", "Go", "Git"},
-        Focus:      []string{"Systems Programming", "Security Tooling", "Linux Internals"},
-        Sec:        []string{"Application Security", "LPE Auditing", "Web Recon & Fuzzing"},
-        Role:       []string{"Systems Programmer", "Security Tool Developer"},
-        Mission:    "Building Systems // Writing Security Tools // Living in Terminal",
-        Driver:     "Fedora Linux",
-        HomeLab:    "Raspberry Pi",
+var Links = links{
         Portfolio:  "https://wxwreak.vercel.app",
         TryHackMe:  "https://tryhackme.com/p/wxwreak",
         Twitter:    "https://x.com/wxwreak",
         DevTo:      "https://dev.to/wxwreak",
         Reddit:     "https://www.reddit.com/user/wxwreak",
+}
+```
+
+<br>
+
+```go
+type techstack struct {
+        Stack      []string
+        Sec        []string
+        Role       []string
+        Driver     string
+        HomeLab    string
+}
+
+var TechStack = techstack{
+        Stack:     []string{"Linux", "Python", "Go", "Docker", "Git"},
+        Sec:       []string{"OffSec Mindset", "Ad-hoc Vulnerability Hunting"},
+        Role:      []string{"Systems Programmer", "Backend & Security Tool Developer"},
+        Driver:    "Fedora Linux",
+        HomeLab:   "Raspberry Pi",
 }
 ```
