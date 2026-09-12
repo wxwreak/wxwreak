@@ -1,6 +1,13 @@
 'use client';
 
-export default function ReposRow({ number, title, subtitle, description, url, tags }) {
+export default function ReposRow({ 
+  number, 
+  title, 
+  subtitle, 
+  description, 
+  url, 
+  tags = [] 
+}) {
   return (
     <a 
       href={url} 
