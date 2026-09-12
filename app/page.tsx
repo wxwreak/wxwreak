@@ -1,13 +1,15 @@
 import Image from "next/image";
 import Link from 'next/link';
 import Footer from '@/components/Footer';
-import ProjectRow from '@/components/ProjectRow';
+import ReposRow from '@/components/ReposRow';
 import SkillRow from '@/components/SkillRow';
 import AIContext from '@/components/AIContext';
+import ProjectsRow from '@/components/ProjectsRow';
 
 export default function Home() {
   const currentHour = Math.floor(Date.now() / (1000 * 60 * 60));
   const pfpUrl = `https://avatars.githubusercontent.com/u/217353155?v=4&s=160&t=${currentHour}`;
+
   return (
     <div className="bg-black text-white selection:bg-white selection:text-black min-h-screen font-sans antialiased">
       <AIContext />
@@ -46,12 +48,12 @@ export default function Home() {
           </div>
         </section>
 
-    <div className="mt-24 mb-10 ml-2">
-      <h2 className="text-4xl md:text-6xl font-bold uppercase italic tracking-tighter text-gray-200 opacity-50">
-        Skills
-      </h2>
-      <div className="h-[2px] w-12 bg-gray-900 mt-2"></div>
-    </div>
+        <div className="mt-24 mb-10 ml-2">
+          <h2 className="text-4xl md:text-6xl font-bold uppercase italic tracking-tighter text-gray-200 opacity-50">
+            Skills
+          </h2>
+          <div className="h-[2px] w-12 bg-gray-900 mt-2"></div>
+        </div>
 
         <section className="border-t border-gray-900">
           <SkillRow
@@ -69,109 +71,107 @@ export default function Home() {
             skills="Docker, Linux, Git"
             level="[ Hands-on ]"
           />
-          <SkillRow
+          <SkillRow 
             category="Cyber Security"
             skills="TryHackMe"
             level="[ 2024 - Present ]"
           />
         </section>
 
-    <div className="mt-24 mb-10 ml-2">
-      <h2 className="text-4xl md:text-6xl font-bold uppercase italic tracking-tighter text-gray-200 opacity-50">
-        Projects
-      </h2>
-      <div className="h-[2px] w-12 bg-gray-900 mt-2"></div>
-    </div>
+        <div className="mt-24 mb-10 ml-2">
+          <h2 className="text-4xl md:text-6xl font-bold uppercase italic tracking-tighter text-gray-200 opacity-50">
+            Repositories
+          </h2>
+          <div className="h-[2px] w-12 bg-gray-900 mt-2"></div>
+        </div>
 
-<section className="space-y-0 border-t border-gray-900">
-  <ProjectRow 
-    number="01"
-    title={
-      <div className="flex items-center flex-wrap gap-2">
-      <span className="font-bold">updateit</span>
-      <span className="text-xs uppercase px-2 py-0.5 rounded border border-blue-500/30 bg-blue-500/10 text-blue-400 font-medium">
-      I personally use it
-      </span>
-    </div>
-  }
-    description="CLI tool to update all packages from listed package managers."
-    url="https://github.com/wxwreak/updateit"
-  />
-  <ProjectRow 
-    number="02"
-    title={
-      <div className="flex items-center flex-wrap gap-2">
-      <span className="font-bold">ppush</span>
-      <span className="text-xs uppercase px-2 py-0.5 rounded border border-blue-500/30 bg-blue-500/10 text-blue-400 font-medium">
-      I personally use it
-      </span>
-    </div>
-  }
-    description="lightweight Python automation script designed to streamline your Git workflow. Stop typing three commands repeatedly—do it all with one."
-    url="https://github.com/wxwreak/ppush"
-  />
-  <ProjectRow
-    number="03"
-    title={
-      <div className="flex items-center flex-wrap gap-2">
-      <span className="font-bold">Vulnfy</span>
-      <span className="text-xs uppercase px-2 py-0.5 rounded border border-blue-500/30 bg-blue-500/10 text-blue-400 font-medium">
-      I personally use it
-      </span>
-      </div>
-    }
-    description="Vulnfy is a lightweight, cross-platform dependency and container vulnerability scanner written in Python. It automatically detects project configuration/lock files across multiple languages and ecosystems, queries the OSV API, and generates a structured JSON vulnerability report."
-    url="https://github.com/wxwreak/vulnfy"
-  />
-  <ProjectRow
-    number="04"
-    title={
-      <div className="flex items-center flex-wrap gap-2">
-      <span className="font-bold">webrr</span>
-      <span className="text-xs uppercase px-2 py-0.5 rounded border border-blue-500/30 bg-blue-500/10 text-blue-400 font-medium">
-      I personally use it
-      </span>
-      </div>
-    }
-    description="Webrr is a command-line utility written in Go designed to perform reconnaissance on web servers. It checks for security-related HTTP headers, detects Web Application Firewalls (WAFs), and identifies Content Management Systems (CMS)."
-    url="https://github.com/wxwreak/webrr"
-    />
-  <ProjectRow
-    number="05"
-    title={
-      <div className="flex items-center flex-wrap gap-2">
-      <span className="font-bold">fuzzmap</span>
-      <span className="text-xs uppercase px-2 py-0.5 rounded border border-blue-500/30 bg-blue-500/10 text-blue-400 font-medium">
-      I personally use it
-      </span>
-      </div>
-    }
-    description="Fuzzmap is a simple and fast command-line web fuzzing tool written in Go. It allows you to discover hidden directories, files, and endpoints on a target web server using a specified wordlist and concurrent threads."
-    url="https://github.com/wxwreak/fuzzmap"
-    />
-  <ProjectRow
-    number="06"
-    title={
-      <div className="flex items-center flex-wrap gap-2">
-      <span className="font-bold">lpechk</span>
-      <span className="text-xs uppercase px-2 py-0.5 rounded border border-blue-500/30 bg-blue-500/10 text-blue-400 font-medium">
-      I personally use it sometimes
-      </span>
-      </div>
-    }
-    description="A lightweight, automated local enumeration tool written in Go designed to audit Linux systems for potential privilege escalation vectors, misconfigurations, and sensitive data exposure."
-    url="https://github.com/wxwreak/lpechk"
-    />
-</section>
-    <div className="mt-24 mb-10 ml-2">
-      <h2 className="text-4xl md:text-6xl font-bold uppercase italic tracking-tighter text-gray-200 opacity-50">
-        Experiences
-      </h2>
-      <div className="h-[2px] w-12 bg-gray-900 mt-2"></div>
-    </div>
-    <p className="mt-6 text-sm md:text-base font-medium uppercase tracking-widest text-white italic opacity-50">
-      [ Coming Soon ]
-    </p>
+      <section className="space-y-0 border-t border-gray-900">
+          <ReposRow 
+            number="01"
+            title="updateit"
+            subtitle={
+              <span className="text-xs uppercase px-2 py-0.5 rounded border border-blue-500/30 bg-blue-500/10 text-blue-400 font-medium">
+                I personally use it
+              </span>
+            }
+            description="CLI tool to update all packages from listed package managers."
+            url="https://github.com/wxwreak/updateit"
+          />
+          <ReposRow 
+            number="02"
+            title="ppush"
+            subtitle={
+              <span className="text-xs uppercase px-2 py-0.5 rounded border border-blue-500/30 bg-blue-500/10 text-blue-400 font-medium">
+                I personally use it
+              </span>
+            }
+            description="lightweight Python automation script designed to streamline your Git workflow. Stop typing three commands repeatedly—do it all with one."
+            url="https://github.com/wxwreak/ppush"
+          />
+          <ReposRow
+            number="03"
+            title="Vulnfy"
+            subtitle={
+              <span className="text-xs uppercase px-2 py-0.5 rounded border border-blue-500/30 bg-blue-500/10 text-blue-400 font-medium">
+                I personally use it
+              </span>
+            }
+            description="Vulnfy is a lightweight, cross-platform dependency and container vulnerability scanner written in Python. It automatically detects project configuration/lock files across multiple languages and ecosystems, queries the OSV API, and generates a structured JSON vulnerability report."
+            url="https://github.com/wxwreak/vulnfy"
+          />
+          <ReposRow
+            number="04"
+            title="webrr"
+            subtitle={
+              <span className="text-xs uppercase px-2 py-0.5 rounded border border-blue-500/30 bg-blue-500/10 text-blue-400 font-medium">
+                I personally use it
+              </span>
+            }
+            description="Webrr is a command-line utility written in Go designed to perform reconnaissance on web servers. It checks for security-related HTTP headers, detects Web Application Firewalls (WAFs), and identifies Content Management Systems (CMS)."
+            url="https://github.com/wxwreak/webrr"
+          />
+          <ReposRow
+            number="05"
+            title="fuzzmap"
+            subtitle={
+              <span className="text-xs uppercase px-2 py-0.5 rounded border border-blue-500/30 bg-blue-500/10 text-blue-400 font-medium">
+                I personally use it
+              </span>
+            }
+            description="Fuzzmap is a simple and fast command-line web fuzzing tool written in Go. It allows you to discover hidden directories, files, and endpoints on a target web server using a specified wordlist and concurrent threads."
+            url="https://github.com/wxwreak/fuzzmap"
+          />
+          <ReposRow
+            number="06"
+            title="lpechk"
+            subtitle={
+              <span className="text-xs uppercase px-2 py-0.5 rounded border border-blue-500/30 bg-blue-500/10 text-blue-400 font-medium">
+                I personally use it sometimes
+              </span>
+            }
+            description="A lightweight, automated local enumeration tool written in Go designed to audit Linux systems for potential privilege escalation vectors, misconfigurations, and sensitive data exposure."
+            url="https://github.com/wxwreak/lpechk"
+          />
+        </section>
+
+        <div className="mt-24 mb-10 ml-2">
+          <h2 className="text-4xl md:text-6xl font-bold uppercase italic tracking-tighter text-gray-200 opacity-50">
+            Projects
+          </h2>
+          <div className="h-[2px] w-12 bg-gray-900 mt-2"></div>
+        </div>
+      <section className="border-t border-gray-900">
+        <ProjectsRow 
+          number="01"
+          title="Whisper Messenger"
+          subtitle="End-to-End Encrypted Chat Client"
+          description="A fast, private, end-to-end encrypted chat client built for the terminal. No phone numbers, no tracking, zero telemetry."
+          url="https://github.com/whispermessenger"
+          tags={["Go", "UI", "E2EE", "Cryptography", "Zero Telemetry"]}
+          role="Founder & Developer"
+          period="Present"
+        />
+      </section>
         <Footer />
       </main>
     </div>
