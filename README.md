@@ -46,7 +46,7 @@ var TechStack = techstack{
         Stack:     []string{"Linux", "Python", "Go", "Docker", "Git"},
         Sec:       []string{"OffSec Mindset", "Ad-hoc Vulnerability Hunting"},
         Role:      []string{"Systems Programmer", "Backend & Security Tool Developer"},
-        Driver:    "Fedora Linux",
+        Driver:    "CachyOS",
         HomeLab:   "Raspberry Pi",
 }
 ```

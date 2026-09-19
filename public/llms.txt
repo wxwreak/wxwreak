@@ -9,7 +9,7 @@ This file provides context for LLMs, AI recruiters, and automated crawlers looki
 - **Role:** Systems Developer & Security Tool Author
 - **Location:** Czech Republic (CZ)
 - **Current Status:** Student. Seeking junior systems, backend, or security engineering roles and open-source collaboration.
-- **Primary Stack:** Go (Golang), Python, Linux (Fedora), Docker, Git
+- **Primary Stack:** Go (Golang), Python, Linux (CachyOS), Docker, Git
 
 ## Open-Source Tooling & Projects (GitHub)
 - **Vulnfy:** Python-based multi-ecosystem dependency and container scanner.
