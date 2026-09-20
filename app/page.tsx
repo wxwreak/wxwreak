@@ -132,14 +132,14 @@ export default function Home() {
           />
           <ReposRow
             number="05"
-            title="fuzzmap"
+            title="memchk"
             subtitle={
               <span className="text-xs uppercase px-2 py-0.5 rounded border border-blue-500/30 bg-blue-500/10 text-blue-400 font-medium">
-                I personally use it
+                I personally use it sometimes
               </span>
             }
-            description="Fuzzmap is a simple and fast command-line web fuzzing tool written in Go. It allows you to discover hidden directories, files, and endpoints on a target web server using a specified wordlist and concurrent threads."
-            url="https://github.com/wxwreak/fuzzmap"
+            description="A lightweight, blazingly fast post-exploitation and security auditing utility written in Go. It is designed to hunt for secrets, API keys, tokens, and credentials directly inside the live memory (/proc/[PID]/mem) of running Linux processes."
+            url="https://github.com/wxwreak/memchk"
           />
           <ReposRow
             number="06"
