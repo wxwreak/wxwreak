@@ -161,9 +161,9 @@ export default function Home() {
           <div className="h-[2px] w-12 bg-gray-900 mt-2"></div>
         </div>
       <section className="border-t border-gray-900">
-        <div className="text-4xl md:text-6xl font-bold uppercase italic tracking-tighter text-gray-200 opacity-50">
-          [ Nothing Yet ]
-        </div>
+      <p className="mt-6 text-sm md:text-base font-medium uppercase tracking-widest text-white italic opacity-50">
+        [ Nothing yet ]
+      </p>
       </section>
         <Footer />
       </main>
