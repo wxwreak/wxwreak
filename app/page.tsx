@@ -4,17 +4,10 @@ import Footer from '@/components/Footer';
 import ReposRow from '@/components/ReposRow';
 import SkillRow from '@/components/SkillRow';
 import AIContext from '@/components/AIContext';
-import { headers } from 'next/headers';
-import { handleTerminalReq } from '@/components/TerminalCard';
 
-export default async function Home() {
+export default function Home() {
   const currentHour = Math.floor(Date.now() / (1000 * 60 * 60));
   const pfpUrl = `https://avatars.githubusercontent.com/u/217353155?v=4&s=160&t=${currentHour}`;
-  const headersList = await headers();
-  const userAgent = headersList.get('user-agent') || '';
-  
-  const terminalResponse = handleTerminalReq(userAgent);
-  if (terminalResponse) return terminalResponse;
 
   return (
     <div className="bg-black text-white selection:bg-white selection:text-black min-h-screen font-sans antialiased">
