@@ -79,10 +79,6 @@ Furthermore, the data synchronization routines embedded inside this module imple
 
 To analyze the network-level defense posture, I ran a compliance diagnostic scan using [Webrr](https://github.com/wxwreak/webrr). The assessment revealed a total absence of vital server-side defensive response flags. The server layer fails to broadcast directive rules meant to instruct client browsers on how to strictly sand-box and protect the running execution space.
 
-Below is the verified diagnostic report fetched directly from the **Webrr** engine interface:
-
-![Webrr Security Headers Audit Log](image_AqMGcz.png)
-
 #### Exploitation Risks & Impact of Missing Headers:
 * **Missing Content-Security-Policy (CSP):** Leaves the platform highly vulnerable to Cross-Site Scripting (XSS) and injection threats. An attacker capable of executing persistent scripts could freely exfiltrate session data or hook client web browsers.
 * **Missing X-Frame-Options:** Exposes the storefront to Clickjacking attacks, enabling malicious actors to overlay the storefront inside invisible frames and steal user clicks or transaction interactions.
