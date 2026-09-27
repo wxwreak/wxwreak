@@ -1,3 +1,5 @@
+import { NextResponse } from "next/server";
+
 export function proxy(request) {
   const userAgent = request.headers.get('user-agent') || '';
 
@@ -37,7 +39,7 @@ export function proxy(request) {
     });
   }
 
-  return NextProxy.next();
+  return NextResponse.next();
 }
 
 export const config = {
