@@ -43,7 +43,7 @@ type techstack struct {
 }
 
 var TechStack = techstack{
-        Stack:     []string{"Linux", "Python", "Go", "Docker", "Git"},
+        Stack:     []string{"Linux", "Python", "Go", "Docker", "Git", "Rust"},
         Sec:       []string{"OffSec Mindset", "Ad-hoc Vulnerability Hunting"},
         Role:      []string{"Systems Programmer", "Backend & Security Tool Developer"},
         Driver:    "CachyOS",

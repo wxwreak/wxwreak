@@ -62,7 +62,7 @@ export default function Home() {
           />
           <SkillRow
             category="Systems & Tooling"
-            skills="Go"
+            skills="Go, Rust (Learning)"
             level="[ Active Development ]"
           />
           <SkillRow
