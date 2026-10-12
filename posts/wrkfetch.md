@@ -6,11 +6,11 @@ description: Building a lightweight system information fetcher in Rust from scra
 
 # Why I Built My Own System Fetch Tool in Rust (And What I Learned Along the Way)
 
-Let’s be honest: the Linux community has no shortage of system fetch tools. From the classic `neofetch` (and its many modern successors like `fastfetch`), we are spoiled for choice when it comes to displaying our OS, kernel, and RAM usage alongside a cool ASCII logo. 
+Let’s be honest: the Linux community has no shortage of system fetch tools. From the classic `neofetch` (and its many modern successors like `fastfetch`), we are spoiled for choice when it comes to displaying our OS, kernel, and RAM usage alongside a cool ASCII logo.
 
-So, why spend two days writing my own from scratch? 
+So, why spend two days writing my own from scratch?
 
-Meet **`wrkfetch`**—a lightweight, custom system information fetch tool written entirely in Rust. It was born out of a mix of curiosity, a desire to tinker with low-level system APIs, and wanting a fetch tool tailored precisely to how I like things. 
+Meet `wrkfetch` A lightweight, custom system information fetch tool written entirely in Rust. It was born out of a mix of curiosity, a desire to tinker with low-level system APIs, and wanting a fetch tool tailored precisely to how I like things—now featuring an expanded selection of custom ASCII art layouts.
 
 Here is the story of how I built it, the hurdles I faced, and what I learned along the way.
 
@@ -22,7 +22,6 @@ When choosing a language for a systems-level CLI tool, **Rust** was an easy choi
 
 Instead of writing everything from absolute zero (like raw system calls for everything), Rust’s ecosystem let me stand on the shoulders of giants using crates like:
 * **`sysinfo`** for hardware, CPU, memory, and uptime metrics.
-* **`wgpu`** for safely querying GPU information across different backends.
 * **`colored`** for adding clean ANSI colors to the terminal output.
 
 ---
@@ -86,18 +85,26 @@ Scanning directories directly made the execution remarkably fast, avoiding the l
 
 Beyond package counting, building `wrkfetch` gave me a chance to implement a few fun features:
 
-### 1. Asynchronous GPU Fetching via `wgpu`
-Getting GPU info across different graphics APIs can be messy. By leveraging `wgpu` and blocking on it using `pollster`, `wrkfetch` safely queries the primary graphics adapter name without crashing the application if drivers misbehave:
-
+### 1. Asynchronous GPU Fetching via `lspci`
+Getting GPU info across different graphics APIs can be messy. By leveraging `lspci`, `wrkfetch` safely queries the primary graphics adapter name without crashing the application if drivers misbehave.
 ```rust
-let gpu_info_str = pollster::block_on(async {
-    let instance = wgpu::Instance::default();
-    let adapters = instance.enumerate_adapters(wgpu::Backends::all());
-    adapters
-        .first()
-        .map(|adapter| adapter.get_info().name)
-        .unwrap_or_else(|| "Unknown".to_string()
-});
+pub fn get_gpu() -> Option<String> {
+    let output = Command::new("lspci").arg("-mm").output().ok()?;
+    let stdout = String::from_utf8_lossy(&output.stdout);
+
+    for line in stdout.lines() {
+        if line.contains("\"VGA compatible controller\"") || line.contains("\"3D controller\"") {
+            let parts: Vec<&str> = line.split('"').collect();
+
+            if parts.len() > 5 {
+                let vendor = parts[3].trim();
+                let device = parts[5].trim();
+                return Some(format!("{} {}", vendor, device));
+            }
+        }
+    }
+    None
+}
 ```
 
 ### 2. Smart Local IP Discovery
