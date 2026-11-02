@@ -30,3 +30,25 @@ body {
   padding: 0;
   overflow-x: hidden;
 }
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-3deg); transform-origin: top center; }
+  50% { transform: rotate(3deg); transform-origin: top center; }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 0.8; }
+  30% { opacity: 0.95; }
+  35% { opacity: 0.6; }
+  45% { opacity: 0.9; }
+  70% { opacity: 0.4; }
+  85% { opacity: 1; }
+}
+
+.animate-wiggle {
+  animation: wiggle 6s ease-in-out infinite;
+}
+
+.animate-flicker {
+  animation: flicker 3s ease-in-out infinite;
+}

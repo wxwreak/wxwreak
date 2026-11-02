@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import CustomCursor from '../components/Cursor';
 import './globals.css';
+import SessionalEffects from "@/components/SessonalEffects";
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://wxwreak.vercel.app/'), 
+  metadataBase: new URL('https://wxwreak.vercel.app/'),
   title : {
     default: "wxwreak | Infrastructure, Automation & Security Tooling",
     template: "%s | wxwreak"
@@ -42,6 +43,7 @@ export default function RootLayout({
     <html lang="en" className="bg-black">
       <body className="bg-black text-white m-0 p-0 antialiased overflow-x-hidden">
         <CustomCursor />
+        <SessionalEffects />
         {children}
       </body>
     </html>
