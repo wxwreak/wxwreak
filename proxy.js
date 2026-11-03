@@ -23,7 +23,7 @@ export function proxy(request) {
     card += formatRow(`${boldGreen}wxwreak${reset}`);
     card += formatRow(`${gray}Systems Programmer // Security Tool Developer${reset}`);
     card += formatRow("");
-    card += formatRow(`${gray}Focus:${reset}    ${white}Linux Internals, Security Tooling, Go, Py${reset}`);
+    card += formatRow(`${gray}Focus:${reset}    ${white}Linux Internals, Security Tooling, Go, Py, Rust${reset}`);
     card += formatRow(`${gray}OS/Env:${reset}   ${white}CachyOS, Raspberry Pi HomeLab${reset}`);
     card += formatRow("");
     card += formatRow(`${gray}GitHub:${reset}   ${green}https://github.com/wxwreak${reset}`);
