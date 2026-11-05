@@ -71,19 +71,17 @@ export default async function BlogPost({ params }: Props) {
     );
   }
 
-  // TATO PIPELINE VEZME LOKÁLNÍ MARKDOWN FOTKU A UDĚLÁ Z NÍ KLIKACÍ TLAČÍTKO PRO NOVÝ TAB
   const processedContent = await unified()
     .use(remarkParse)
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeRaw)
     .use(rehypeRewrite, {
-      selector: 'img', // <--- Cílíme přímo na vygenerovaný tag obrázku z ![]()
+      selector: 'img',
       rewrite: (node) => {
         if (node.type === 'element' && node.tagName === 'img') {
           const src = node.properties?.src || '';
           const alt = node.properties?.alt || 'Open Screenshot';
 
-          // Kompletní přepis lokálního obrázku na čisté tlačítko otevírané v novém okně
           node.tagName = 'div';
           node.properties = { className: 'my-8 font-mono text-sm' };
           node.children = [
@@ -116,7 +114,7 @@ export default async function BlogPost({ params }: Props) {
     author: {
       '@type': 'Person',
       name: 'wxwreak',
-      url: 'https://vercel.app',
+      url: 'https://wxwreak.vercel.app',
     },
   };
 
