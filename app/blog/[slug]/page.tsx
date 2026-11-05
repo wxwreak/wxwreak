@@ -71,6 +71,7 @@ export default async function BlogPost({ params }: Props) {
     );
   }
 
+  // Odolná pipeline, která čistí odkazy a obchází hotlinking ochranu ImgBB
   const processedContent = await unified()
     .use(remarkParse)
     .use(remarkRehype, { allowDangerousHtml: true })
@@ -83,11 +84,14 @@ export default async function BlogPost({ params }: Props) {
           if (firstChild && firstChild.type === 'text' && firstChild.value) {
             const textValue = firstChild.value;
 
-            const match = textValue.match(/^(.+?):\s*(https:\/\/i\.ibb\.co\/\S+)/i);
+            const match = textValue.match(/^(.+?):\s*(https:\/\/.*?ibb\.co\/\S+)/i);
 
             if (match) {
               const label = match[1].trim();
-              const url = match[2].trim();
+              let url = match[2].trim();
+
+              url = url.replace('i.ibb.co', 'ibb.co');
+              url = url.replace(/\.(jpg|jpeg|png|gif|webp)$/i, '');
 
               node.tagName = 'div';
               node.properties = { className: 'my-8 font-mono text-sm' };
@@ -99,6 +103,7 @@ export default async function BlogPost({ params }: Props) {
                     href: url,
                     target: '_blank',
                     rel: 'noopener noreferrer',
+                    referrerpolicy: 'no-referrer', // Vynutí smazání Referer hlavičky v prohlížeči
                     className: 'inline-block text-blue-400 hover:text-white border border-gray-800 bg-gray-900/50 hover:bg-gray-900 px-4 py-2 rounded transition uppercase tracking-widest text-xs font-semibold cursor-pointer'
                   },
                   children: [{ type: 'text', value: `[ Open Screenshot: ${label} ↗ ]` }]
@@ -123,7 +128,7 @@ export default async function BlogPost({ params }: Props) {
     author: {
       '@type': 'Person',
       name: 'wxwreak',
-      url: 'https://wxwreak.vercel.app',
+      url: 'https://vercel.app',
     },
   };
 
