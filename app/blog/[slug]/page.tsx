@@ -71,50 +71,38 @@ export default async function BlogPost({ params }: Props) {
     );
   }
 
-  // Odolná pipeline, která čistí odkazy a obchází hotlinking ochranu ImgBB
+  // TATO PIPELINE VEZME LOKÁLNÍ MARKDOWN FOTKU A UDĚLÁ Z NÍ KLIKACÍ TLAČÍTKO PRO NOVÝ TAB
   const processedContent = await unified()
     .use(remarkParse)
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeRaw)
     .use(rehypeRewrite, {
-      selector: 'p',
+      selector: 'img', // <--- Cílíme přímo na vygenerovaný tag obrázku z ![]()
       rewrite: (node) => {
-        if (node.type === 'element' && node.tagName === 'p' && node.children) {
-          const firstChild = node.children[0];
-          if (firstChild && firstChild.type === 'text' && firstChild.value) {
-            const textValue = firstChild.value;
+        if (node.type === 'element' && node.tagName === 'img') {
+          const src = node.properties?.src || '';
+          const alt = node.properties?.alt || 'Open Screenshot';
 
-            const match = textValue.match(/^(.+?):\s*(https:\/\/.*?ibb\.co\/\S+)/i);
-
-            if (match) {
-              const label = match[1].trim();
-              let url = match[2].trim();
-
-              url = url.replace('i.ibb.co', 'ibb.co');
-              url = url.replace(/\.(jpg|jpeg|png|gif|webp)$/i, '');
-
-              node.tagName = 'div';
-              node.properties = { className: 'my-8 font-mono text-sm' };
-              node.children = [
-                {
-                  type: 'element',
-                  tagName: 'a',
-                  properties: {
-                    href: url,
-                    target: '_blank',
-                    rel: 'noopener noreferrer',
-                    referrerpolicy: 'no-referrer', // Vynutí smazání Referer hlavičky v prohlížeči
-                    className: 'inline-block text-blue-400 hover:text-white border border-gray-800 bg-gray-900/50 hover:bg-gray-900 px-4 py-2 rounded transition uppercase tracking-widest text-xs font-semibold cursor-pointer'
-                  },
-                  children: [{ type: 'text', value: `[ Open Screenshot: ${label} ↗ ]` }]
+          // Kompletní přepis lokálního obrázku na čisté tlačítko otevírané v novém okně
+          node.tagName = 'div';
+          node.properties = { className: 'my-8 font-mono text-sm' };
+          node.children = [
+            {
+              type: 'element',
+              tagName: 'a',
+              properties: {
+                href: src,
+                target: '_blank',
+                rel: 'noopener noreferrer',
+                className: 'inline-block text-blue-400 hover:text-white border border-gray-800 bg-gray-900/50 hover:bg-gray-900 px-4 py-2 rounded transition uppercase tracking-widest text-xs font-semibold cursor-pointer'
+              },
+              children: [{ type: 'text', value: `[ Open Screenshot: ${alt} ↗ ]` }]
                 }
               ];
             }
           }
-        }
-      }
     })
-    .use(rehypeStringify)
+    .use(rehypeStringify, { allowDangerousHtml: true })
     .process(post.content);
 
   const contentHtml = processedContent.toString();
