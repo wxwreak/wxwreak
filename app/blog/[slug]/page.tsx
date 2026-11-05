@@ -77,13 +77,13 @@ export default async function BlogPost({ params }: Props) {
     .use(rehypeRaw)
     .use(rehypeRewrite, {
       selector: 'img',
-      rewrite: (node) => {
+      rewrite: (node: any) => {
         if (node.type === 'element' && node.tagName === 'img') {
           const src = node.properties?.src || '';
           const alt = node.properties?.alt || 'Open Screenshot';
 
           node.tagName = 'div';
-          node.properties = { className: 'my-8 font-mono text-sm' };
+          node.properties = { className: ['my-8', 'font-mono', 'text-sm'] };
           node.children = [
             {
               type: 'element',
@@ -91,14 +91,20 @@ export default async function BlogPost({ params }: Props) {
               properties: {
                 href: src,
                 target: '_blank',
-                rel: 'noopener noreferrer',
-                className: 'inline-block text-blue-400 hover:text-white border border-gray-800 bg-gray-900/50 hover:bg-gray-900 px-4 py-2 rounded transition uppercase tracking-widest text-xs font-semibold cursor-pointer'
+                rel: ['noopener', 'noreferrer'],
+                className: [
+                  'inline-block', 'text-blue-400', 'hover:text-white',
+                  'border', 'border-gray-800', 'bg-gray-900/50',
+                  'hover:bg-gray-900', 'px-4', 'py-2', 'rounded',
+                  'transition', 'uppercase', 'tracking-widest',
+                  'text-xs', 'font-semibold', 'cursor-pointer'
+                ]
               },
               children: [{ type: 'text', value: `[ Open Screenshot: ${alt} ↗ ]` }]
-                }
-              ];
             }
-          }
+          ];
+        }
+      }
     })
     .use(rehypeStringify, { allowDangerousHtml: true })
     .process(post.content);
