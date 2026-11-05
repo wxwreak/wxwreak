@@ -28,7 +28,7 @@ var Links = links{
         Twitter:    "https://x.com/wxwreak",
         DevTo:      "https://dev.to/wxwreak",
         Reddit:     "https://www.reddit.com/user/wxwreak",
-        Medium: 		"https://wxwreak.medium.com"
+        Medium:     "https://wxwreak.medium.com"
 }
 ```
 
