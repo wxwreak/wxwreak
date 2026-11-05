@@ -43,7 +43,7 @@ The API accepted this logic perfectly. It filtered down the results, proving tha
 
 Here is the exact request and response captured inside **Burp Suite**:
 
-![Data Leak Response](https://i.ibb.co/5XcwF3Mq/dataleak-blurred.jpg)
+Data Leak Response: https://i.ibb.co/5XcwF3Mq/dataleak-blurred.jpg
 *(Note: Real user emails and internal IDs have been partially blurred for privacy).*
 
 ### The Patch: Verifying the Fix
@@ -54,7 +54,7 @@ When sending the `GET /rest/v1/reviews?select=*` request now, the Supabase backe
 This confirms that Row Level Security (RLS) and table permissions are now properly configured and protecting the platform's data.
 Here is the **Burp Suite Repeater** screenshot proving that the leak has been successfully patched:
 
-![Vulnerability Patched Response](https://i.ibb.co/bMm5vT1k/after-blurred.jpg)
+Vulnerability Patch Response: https://i.ibb.co/bMm5vT1k/after-blurred.jpg
 
 ## 2. Bonus Discovery: Missing Security Headers
 

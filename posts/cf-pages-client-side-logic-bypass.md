@@ -17,7 +17,7 @@ By utilizing advanced intercepting proxies, collaborative static code analysis, 
 To conduct this research and piece together the flawed execution flows, a blended stack of manual analysis and automated auditing was used:
 * **Burp Suite (Community Edition):** Used to capture, analyze, and attempt replay attacks on the OAuth/SSO synchronization flow (`forum.cfx.re`) and inspect dynamic outbound API requests.
 * **Gemini AI Collaboration:** Utilized as an advanced static code analysis assistant to quickly review compiled JavaScript components (`app.js` and `tebex.js`), trace variable scopes, and map out client-side state machine conditions.
-* **Webrr Security Scanner:** My proprietary open-source command-line utility written in Go, specifically designed to map web server configurations, detect firewalls, and audit security headers. (Source code available on [GitHub](https://github.com/wxwreak/webrr)).
+* **Webrr Security Scanner:** My proprietary open-source command-line utility written in Go, specifically designed to map web server configurations, detect firewalls, and audit security headers. (Source code available on [**GitHub**](https://github.com/wxwreak/webrr)).
 
 ---
 

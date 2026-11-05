@@ -162,4 +162,4 @@ Spending two weekend days building `wrkfetch` turned out to be an awesome exerci
 
 If you want to check out the source code, contribute, or run it on your own machine, head over to the GitHub repository:
 
-👉 **[GitHub - wxwreak/wrkfetch](https://github.com/wxwreak/wrkfetch)**
+👉 **[**GitHub - wxwreak/wrkfetch**](https://github.com/wxwreak/wrkfetch)**

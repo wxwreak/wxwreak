@@ -1,11 +1,15 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { remark } from 'remark';
-import html from 'remark-html';
 import Link from 'next/link';
 import Footer from '@/components/Footer';
 import { Metadata } from 'next';
+import { unified } from 'unified';
+import remarkParse from 'remark-parse';
+import remarkRehype from 'remark-rehype';
+import rehypeRaw from 'rehype-raw';
+import rehypeRewrite from 'rehype-rewrite';
+import rehypeStringify from 'rehype-stringify';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -19,7 +23,7 @@ function getPostData(slug: string) {
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const { data, content } = matter(fileContents);
     return {
-      slug, 
+      slug,
       content,
       title: data.title || 'Untitled Post',
       date: data.date || '',
@@ -58,7 +62,7 @@ export async function generateStaticParams() {
 export default async function BlogPost({ params }: Props) {
   const { slug } = await params;
   const post = getPostData(slug);
-  
+
   if (!post) {
     return (
       <div className="bg-black text-white selection:bg-white selection:text-black min-h-screen font-sans antialiased flex items-center justify-center">
@@ -67,10 +71,49 @@ export default async function BlogPost({ params }: Props) {
     );
   }
 
-  const processedContent = await remark()
-    .use(html)
+  const processedContent = await unified()
+    .use(remarkParse)
+    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeRaw)
+    .use(rehypeRewrite, {
+      selector: 'p',
+      rewrite: (node) => {
+        if (node.type === 'element' && node.tagName === 'p' && node.children) {
+          const firstChild = node.children[0];
+          if (firstChild && firstChild.type === 'text' && firstChild.value) {
+            const textValue = firstChild.value;
+
+            const match = textValue.match(/^(.+?):\s*(https:\/\/i\.ibb\.co\/\S+)/i);
+
+            if (match) {
+              const label = match[1].trim();
+              const url = match[2].trim();
+
+              node.tagName = 'div';
+              node.properties = { className: 'my-8 font-mono text-sm' };
+              node.children = [
+                {
+                  type: 'element',
+                  tagName: 'a',
+                  properties: {
+                    href: url,
+                    target: '_blank',
+                    rel: 'noopener noreferrer',
+                    className: 'inline-block text-blue-400 hover:text-white border border-gray-800 bg-gray-900/50 hover:bg-gray-900 px-4 py-2 rounded transition uppercase tracking-widest text-xs font-semibold cursor-pointer'
+                  },
+                  children: [{ type: 'text', value: `[ Open Screenshot: ${label} ↗ ]` }]
+                }
+              ];
+            }
+          }
+        }
+      }
+    })
+    .use(rehypeStringify)
     .process(post.content);
+
   const contentHtml = processedContent.toString();
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -92,10 +135,10 @@ export default async function BlogPost({ params }: Props) {
       />
 
       <main className="max-w-4xl mx-auto px-4 sm:px-6 pt-16 md:pt-32">
-        
+
         <div className="mb-12">
-          <Link 
-            href="/blog" 
+          <Link
+            href="/blog"
             className="font-mono text-xs sm:text-sm text-gray-500 hover:text-white transition uppercase tracking-widest inline-block"
           >
             &larr; [ Back to the list of articles ]
@@ -116,15 +159,15 @@ export default async function BlogPost({ params }: Props) {
           )}
         </header>
 
-        <div 
+        <div
           className="text-gray-300 space-y-6 text-base sm:text-lg leading-relaxed mb-24
-            [&_h2]:text-2xl [&_h2]:sm:text-3xl [&_h2]:font-bold [&_h2]:uppercase [&_h2]:italic [&_h2]:text-white [&_h2]:mt-12 [&_h2]:mb-4 
+            [&_h2]:text-2xl [&_h2]:sm:text-3xl [&_h2]:font-bold [&_h2]:uppercase [&_h2]:italic [&_h2]:text-white [&_h2]:mt-12 [&_h2]:mb-4
             [&_h3]:text-xl [&_h3]:font-bold [&_h3]:text-white [&_h3]:mt-8 [&_h3]:mb-3
-            [&_p]:text-gray-400 [&_p]:leading-relaxed 
+            [&_p]:text-gray-400 [&_p]:leading-relaxed
             [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:space-y-2 [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:space-y-2
             [&_code]:text-blue-400 [&_code]:bg-gray-900 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:rounded [&_code]:text-sm [&_code]:font-mono
             [&_pre]:bg-gray-900 [&_pre]:p-4 [&_pre]:rounded-lg [&_pre]:border [&_pre]:border-gray-800 [&_pre]:overflow-x-auto"
-          dangerouslySetInnerHTML={{ __html: contentHtml }} 
+          dangerouslySetInnerHTML={{ __html: contentHtml }}
         />
 
         <Footer />
